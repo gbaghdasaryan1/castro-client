@@ -1,0 +1,171 @@
+.page {
+  display: flex;
+  min-height: 100vh;
+  font-family: Inter, sans-serif;
+}
+
+/* LEFT SIDE */
+.left {
+  width: 50%;
+  background: #000;
+  color: white;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: url("/your-image.jpg") center/cover;
+  opacity: 0.35;
+  mix-blend-mode: luminosity;
+}
+
+.leftContent {
+  position: relative;
+  max-width: 400px;
+
+  h1 {
+    font-size: 48px;
+    font-weight: 600;
+  }
+
+  p {
+    margin-top: 20px;
+    opacity: 0.8;
+    line-height: 1.6;
+  }
+}
+
+.blob {
+  position: absolute;
+  bottom: 80px;
+  left: 80px;
+  width: 260px;
+  height: 260px;
+  background: rgba(107, 56, 212, 0.2);
+  filter: blur(100px);
+  border-radius: 50%;
+}
+
+/* RIGHT SIDE */
+.right {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f9f9f9;
+}
+
+.card {
+  width: 420px;
+  color: #000;
+
+  h2 {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+
+  p {
+    color: #666;
+    margin-bottom: 20px;
+  }
+}
+
+/* ROLE */
+.roles {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+
+  button {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ddd;
+    background: white;
+    color: #000;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .active {
+    background: black !important;
+    color: white;
+  }
+}
+
+
+/* FORM */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  input {
+    padding: 14px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    background: transparent;
+    outline: none;
+    font-size: 14px;
+    color: #000;
+  }
+
+  button {
+    margin-top: 10px;
+    padding: 14px;
+    background: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 2px;
+  }
+}
+
+/* FOOTER */
+.footer {
+  margin-top: 20px;
+  font-size: 13px;
+
+  a {
+    color: black;
+    font-weight: bold;
+  }
+}
+
+.terms {
+  margin-top: 15px;
+  font-size: 11px;
+  opacity: 0.6;
+  line-height: 1.4;
+}
+
+.passwordWrapper {
+  position: relative; 
+  border-bottom: 1px solid #ddd;
+  
+  input{
+     border-bottom: unset;
+  }
+
+   button {
+
+    margin-top: unset;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+}
+
+.error {
+  color: #e53935;
+  font-size: 12px;
+  margin-top: -6px;
+  margin-bottom: 6px;
+}
