@@ -14,6 +14,10 @@
     "jsx": "react-jsx",
     "incremental": true,
     "paths": {
+      "@shared/*": ["./src/shared/*"],
+      "@features/*": ["./src/features/*"],
+      "@styles/*": ["./src/styles/*"],
+      "@config/*": ["./src/config/*"],
       "@/*": ["./src/*"]
     }
   },
