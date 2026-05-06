@@ -4,10 +4,14 @@ import styles from "./login.module.scss";
 import axios from "axios";
 import Link from "next/link";
 import { LoginFormData } from "@features/auth/types";
+import { useTranslation } from "react-i18next";
+
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+  const { t } = useTranslation(["auth", "common"]);
+
 
   const {
     register,
@@ -24,8 +28,8 @@ const LoginPage = () => {
       console.log("LOGIN SUCCESS:", res.data);
 
       localStorage.setItem("token", res.data.token);
-    } catch (err: any) {
-      console.error("LOGIN ERROR:", err.message);
+    } catch (err: unknown) {
+      console.error("LOGIN ERROR:", err instanceof Error ? err.message : String(err));
     } finally {
       setLoading(false);
     }
@@ -41,42 +45,42 @@ const LoginPage = () => {
       <div className={styles.container}>
         <div className={styles.branding}>
           <h1>Castro</h1>
-          <p>ESTABLISHED FOR CREATORS</p>
+          <p>{t("auth.login.subtitle")}</p>
         </div>
 
         <div className={styles.glassCard}>
           <header className={styles.header}>
-            <h2>Welcome Back</h2>
-            <p>Please enter your details to sign in.</p>
+            <h2>{t("auth.welcomeBack")}</h2>
+            <p>{t("auth.enterYourDetails")}</p>
           </header>
 
           <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
             {/* EMAIL */}
             <div className={styles.field}>
-              <label>EMAIL ADDRESS</label>
+              <label>{t("common.emailAddress")}</label>
 
               <input
                 type="email"
                 placeholder="artist@castro.com"
                 {...register("email", {
-                  required: "Email is required",
+                  required: "common.emailIsRequired",
                   pattern: {
                     value: /\S+@\S+\.\S+/,
-                    message: "Invalid email",
+                    message: "auth.invalidEmail",
                   },
                 })}
               />
 
               {errors.email && (
-                <span className={styles.error}>{errors.email.message}</span>
+                <span className={styles.error}>{t(errors.email.message!)}</span>
               )}
             </div>
 
             {/* PASSWORD */}
             <div className={styles.field}>
               <div className={styles.fieldTop}>
-                <label>PASSWORD</label>
-                <a href="#">FORGOT PASSWORD?</a>
+                <label>{t("common.password")}</label>
+                <Link href="#">{t("auth.forgotPassword")}?</Link>
               </div>
 
               <div className={styles.passwordWrapper}>
@@ -84,10 +88,10 @@ const LoginPage = () => {
                   type={showPassword ? "text" : "password"}
                   placeholder="••••••••"
                   {...register("password", {
-                    required: "Password is required",
+                    required: "common.passwordIsRequired",
                     minLength: {
                       value: 6,
-                      message: "Min 6 characters",
+                      message: "auth.minPasswordLength",
                     },
                   })}
                 />
@@ -101,25 +105,26 @@ const LoginPage = () => {
               </div>
 
               {errors.password && (
-                <span className={styles.error}>{errors.password.message}</span>
+                <span className={styles.error}>{t(errors.password.message!)}</span>
               )}
             </div>
 
             {/* SUBMIT */}
 
             <p className={styles.footer}>
-              Don’t have an account? <Link href="/register">Sign Up</Link>
+              {t("auth.noAccount")}? <Link href="/register">{t('auth.signUp')}</Link>
             </p>
             <button
               type="submit"
               className={styles.submitButton}
               disabled={loading}
             >
-              {loading ? "LOADING..." : "SIGN IN"}
+              {loading ? '...' : t('auth.signIn')}
             </button>
           </form>
         </div>
       </div>
+
     </main>
   );
 };

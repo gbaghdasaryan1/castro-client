@@ -1,0 +1,37 @@
+.switcher {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(196, 199, 199, 0.3);
+  border-radius: 9999px;
+  padding: 4px;
+}
+
+.btn {
+  border: none;
+  background: transparent;
+  border-radius: 9999px;
+  padding: 6px 14px;
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: rgba(68, 71, 72, 0.5);
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s;
+
+  &:hover:not(.active) {
+    color: rgba(68, 71, 72, 0.9);
+  }
+}
+
+.active {
+  background: #000;
+  color: #fff;
+
+  &:hover {
+    background: #6b38d4;
+  }
+}
