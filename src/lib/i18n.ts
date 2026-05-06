@@ -2,7 +2,7 @@
 import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://192.168.101.11:4000/api';
 
 // Initialize once at module load so useTranslation() works before pageProps arrive.
 // Resources are empty here; _app.tsx populates them from getServerSideProps pageProps.
