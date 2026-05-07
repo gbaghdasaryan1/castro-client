@@ -10,6 +10,6 @@ export const loginRequest = async (data: {
 };
 
 export const googleLoginRequest = async (credential: string) => {
-  const res = await axiosInstance.post("/auth/google/callback", { credential });
+  const res = await axiosInstance.post("/auth/google", { credential });
   return res.data; // { accessToken }
 };
