@@ -1,17 +1,21 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
 import styles from "./login.module.scss";
 import axios from "axios";
 import Link from "next/link";
+import { GoogleLogin } from "@react-oauth/google";
 import { LoginFormData } from "@features/auth/types";
 import { useTranslation } from "react-i18next";
 
 
 const LoginPage = () => {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [googleLoading, setGoogleLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const { t } = useTranslation(["auth", "common"]);
-
 
   const {
     register,
@@ -22,17 +26,52 @@ const LoginPage = () => {
   const onSubmit = async (data: LoginFormData) => {
     try {
       setLoading(true);
+      setError(null);
 
       const res = await axios.post("/api/login", data);
 
       console.log("LOGIN SUCCESS:", res.data);
 
       localStorage.setItem("token", res.data.token);
+      router.push("/");
     } catch (err: unknown) {
-      console.error("LOGIN ERROR:", err instanceof Error ? err.message : String(err));
+      const message = err instanceof Error ? err.message : String(err);
+      console.error("LOGIN ERROR:", message);
+      setError(message);
     } finally {
       setLoading(false);
     }
+  };
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleGoogleSuccess = async (credentialResponse: any) => {
+
+    console.log(credentialResponse, "credential response from google");
+
+    try {
+      setGoogleLoading(true);
+      setError(null);
+
+      const res = await axios.post("/api/auth/google-callback", {
+        credential: credentialResponse.credential,
+      });
+
+      console.log("GOOGLE LOGIN SUCCESS:", res.data);
+
+      localStorage.setItem("token", res.data.accessToken);
+      router.push("/");
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : String(err);
+      console.error("GOOGLE LOGIN ERROR:", message);
+      setError(message);
+    } finally {
+      setGoogleLoading(false);
+    }
+  };
+
+  const handleGoogleError = () => {
+    console.error("Google login failed");
+    setError("Google login failed. Please try again.");
   };
 
   return (
@@ -53,6 +92,12 @@ const LoginPage = () => {
             <h2>{t("auth.welcomeBack")}</h2>
             <p>{t("auth.enterYourDetails")}</p>
           </header>
+
+          {error && (
+            <div className={styles.errorBanner}>
+              {error}
+            </div>
+          )}
 
           <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
             {/* EMAIL */}
@@ -110,18 +155,32 @@ const LoginPage = () => {
             </div>
 
             {/* SUBMIT */}
-
             <p className={styles.footer}>
               {t("auth.noAccount")}? <Link href="/register">{t('auth.signUp')}</Link>
             </p>
             <button
               type="submit"
               className={styles.submitButton}
-              disabled={loading}
+              disabled={loading || googleLoading}
             >
               {loading ? '...' : t('auth.signIn')}
             </button>
           </form>
+
+          {/* DIVIDER */}
+          <div className={styles.divider}>
+            <span>{t("common.or") || "or"}</span>
+          </div>
+
+          {/* GOOGLE LOGIN */}
+          <div className={styles.googleContainer}>
+            <GoogleLogin
+              onSuccess={handleGoogleSuccess}
+              onError={handleGoogleError}
+              text="signin_with"
+              size="large"
+            />
+          </div>
         </div>
       </div>
 
