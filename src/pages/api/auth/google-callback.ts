@@ -23,7 +23,7 @@ export default async function handler(
 
   try {
     // Send the Google ID token to your backend
-    const response = await axiosInstance.post('/auth/google/callback', {
+    const response = await axiosInstance.post('/auth/google', {
       idToken: credential,
     });
 

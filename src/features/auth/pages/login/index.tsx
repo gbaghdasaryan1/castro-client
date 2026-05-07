@@ -52,7 +52,7 @@ const LoginPage = () => {
       setGoogleLoading(true);
       setError(null);
 
-      const res = await axios.post("/api/auth/google/callback", {
+      const res = await axios.post("/api/auth/google", {
         credential: credentialResponse.credential,
       });
 
