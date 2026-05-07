@@ -7,7 +7,15 @@ export function withTranslations(namespaces = ['common']) {
     const translations: Record<string, any> = {};
 
     for (const ns of namespaces) {
-      translations[ns] = await loadTranslations(lang, ns);
+      try {
+        translations[ns] = await loadTranslations(lang, ns);
+      } catch (error) {
+        console.error(
+          `[withTranslations] Failed to load namespace "${ns}" for lang "${lang}"`,
+          error,
+        );
+        translations[ns] = {};
+      }
     }
 
     return {
