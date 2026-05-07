@@ -290,9 +290,27 @@ body {
   display: flex;
   justify-content: center;
   width: 100%;
+}
 
-  :global(.google_login_button) {
-    width: 100%;
+.googleButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  border: 1px solid rgba(196, 199, 199, 0.4);
+  background: #fff;
+  border-radius: 9999px;
+  padding: 14px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #3c4043;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    background: #f8f8f8;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
   }
 }
 

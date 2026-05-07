@@ -1,4 +1,3 @@
-import axios from "axios";
 import { axiosInstance } from "@config/axios";
 
 export const loginRequest = async (data: {
@@ -6,10 +5,5 @@ export const loginRequest = async (data: {
   password: string;
 }) => {
   const res = await axiosInstance.post("/auth/login", data);
-  return res.data; // { token, user }
-};
-
-export const googleLoginRequest = async (credential: string) => {
-  const res = await axiosInstance.post("/auth/google", { credential });
-  return res.data as { accessToken: string };
+  return res.data as { token: string };
 };
