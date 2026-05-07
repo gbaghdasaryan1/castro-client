@@ -2,20 +2,21 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import styles from "./login.module.scss";
-import axios from "axios";
 import Link from "next/link";
 import { GoogleLogin } from "@react-oauth/google";
 import { LoginFormData } from "@features/auth/types";
+import { useLogin, useGoogleLogin } from "@features/auth/hooks";
 import { useTranslation } from "react-i18next";
 
 
 const LoginPage = () => {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [googleLoading, setGoogleLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const { t } = useTranslation(["auth", "common"]);
+
+  const loginMutation = useLogin();
+  const googleLoginMutation = useGoogleLogin();
 
   const {
     register,
@@ -24,53 +25,29 @@ const LoginPage = () => {
   } = useForm<LoginFormData>();
 
   const onSubmit = async (data: LoginFormData) => {
-    try {
-      setLoading(true);
-      setError(null);
-
-      const res = await axios.post("/api/login", data);
-
-      console.log("LOGIN SUCCESS:", res.data);
-
-      localStorage.setItem("token", res.data.token);
-      router.push("/");
-    } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : String(err);
-      console.error("LOGIN ERROR:", message);
-      setError(message);
-    } finally {
-      setLoading(false);
-    }
+    setError(null);
+    loginMutation.mutate(data, {
+      onSuccess: (res) => {
+        localStorage.setItem("token", res.token);
+        router.push("/");
+      },
+      onError: (err) => setError(err.message),
+    });
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const handleGoogleSuccess = async (credentialResponse: any) => {
-
-    console.log(credentialResponse, "credential response from google");
-
-    try {
-      setGoogleLoading(true);
-      setError(null);
-
-      const res = await axios.post("/api/auth/google", {
-        credential: credentialResponse.credential,
-      });
-
-      console.log("GOOGLE LOGIN SUCCESS:", res.data);
-
-      localStorage.setItem("token", res.data.accessToken);
-      router.push("/");
-    } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : String(err);
-      console.error("GOOGLE LOGIN ERROR:", message);
-      setError(message);
-    } finally {
-      setGoogleLoading(false);
-    }
+  const handleGoogleSuccess = (credentialResponse: any) => {
+    setError(null);
+    googleLoginMutation.mutate(credentialResponse.credential, {
+      onSuccess: (res) => {
+        localStorage.setItem("token", res.accessToken);
+        router.push("/");
+      },
+      onError: (err) => setError(err.message),
+    });
   };
 
   const handleGoogleError = () => {
-    console.error("Google login failed");
     setError("Google login failed. Please try again.");
   };
 
@@ -161,9 +138,9 @@ const LoginPage = () => {
             <button
               type="submit"
               className={styles.submitButton}
-              disabled={loading || googleLoading}
+              disabled={loginMutation.isPending || googleLoginMutation.isPending}
             >
-              {loading ? '...' : t('auth.signIn')}
+              {loginMutation.isPending ? '...' : t('auth.signIn')}
             </button>
           </form>
 
