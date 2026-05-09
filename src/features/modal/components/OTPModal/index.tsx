@@ -3,12 +3,13 @@ import styles from "./otp.module.scss";
 import Modal from "../Modal";
 
 type Props = {
+  errorOtp?: string | null;
   isOpen: boolean;
   onClose: () => void;
   onSubmit: (code: string) => void;
 };
 
-const OtpModal = ({ isOpen, onClose, onSubmit }: Props) => {
+const OtpModal = ({ errorOtp, isOpen, onClose, onSubmit }: Props) => {
   const [otp, setOtp] = useState<string[]>(["", "", "", "", "", ""]);
 
   const inputsRef = useRef<Array<HTMLInputElement | null>>([]);
@@ -103,6 +104,7 @@ const OtpModal = ({ isOpen, onClose, onSubmit }: Props) => {
         >
           Verify
         </button>
+        {errorOtp && <div className={styles.error}>{errorOtp}</div>}
       </div>
     </Modal>
   );
