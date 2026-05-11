@@ -8,11 +8,10 @@ import OtpModal from "@features/modal/components/OTPModal";
 import { useOTPVerify, useRegister } from "@features/auth/hooks";
 import styles from "./registerForm.module.scss";
 import { RoleSelector } from "../role-selector";
-
+import { Input } from "@shared/ui/input";
 
 const RegisterForm: FC = () => {
     const router = useRouter();
-    const [showPassword, setShowPassword] = useState(false);
     const [role, setRole] = useState<"personal" | "agency">("personal");
     const [openOTP, setOpenOTP] = useState(false);
     const { mutate: otpVerifyMutation, error: otpVerifyError } = useOTPVerify();
@@ -22,7 +21,6 @@ const RegisterForm: FC = () => {
         error: registrationError,
         isError: isRegistrationError,
     } = useRegister();
-
 
     const {
         register,
@@ -61,34 +59,32 @@ const RegisterForm: FC = () => {
             <RoleSelector role={role} onChange={setRole} />
 
             {isRegistrationError && (
-                <div className={styles.error}>{registrationError?.message}</div>
+                <div className={styles.errorBanner}>{registrationError?.message}</div>
             )}
 
             <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-                <input
+                <Input
                     placeholder="First Name"
+                    error={errors.firstName?.message}
                     {...register("firstName", {
                         required: "First name is required",
                         minLength: { value: 2, message: "First Name is too short" },
                     })}
                 />
-                {errors.firstName && (
-                    <span className={styles.error}>{errors.firstName.message}</span>
-                )}
 
-                <input
+                <Input
                     placeholder="Last Name"
+                    error={errors.lastName?.message}
                     {...register("lastName", {
                         required: "Last name is required",
                         minLength: { value: 2, message: "Last Name is too short" },
                     })}
                 />
-                {errors.lastName && (
-                    <span className={styles.error}>{errors.lastName.message}</span>
-                )}
 
-                <input
+                <Input
+                    type="email"
                     placeholder="Email Address"
+                    error={errors.email?.message}
                     {...register("email", {
                         required: "Email is required",
                         pattern: {
@@ -97,29 +93,16 @@ const RegisterForm: FC = () => {
                         },
                     })}
                 />
-                {errors.email && (
-                    <span className={styles.error}>{errors.email.message}</span>
-                )}
 
-                <div className={styles.passwordWrapper}>
-                    <input
-                        type={showPassword ? "text" : "password"}
-                        placeholder="••••••••"
-                        {...register("password", {
-                            required: "Password is required",
-                            minLength: { value: 8, message: "Min 8 characters" },
-                        })}
-                    />
-                    <button
-                        type="button"
-                        onClick={() => setShowPassword((p) => !p)}
-                    >
-                        {showPassword ? "🙈" : "👁"}
-                    </button>
-                </div>
-                {errors.password && (
-                    <span className={styles.error}>{errors.password.message}</span>
-                )}
+                <Input
+                    type="password"
+                    placeholder="••••••••"
+                    error={errors.password?.message}
+                    {...register("password", {
+                        required: "Password is required",
+                        minLength: { value: 8, message: "Min 8 characters" },
+                    })}
+                />
 
                 <button type="submit" disabled={isSubmitting}>
                     {isSubmitting ? "Creating..." : "Create Account"}

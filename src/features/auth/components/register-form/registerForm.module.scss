@@ -15,22 +15,22 @@
   }
 }
 
+.errorBanner {
+  background-color: $error-bg;
+  color: $error-text;
+  border: 1px solid $error-border;
+  border-radius: $radius-sm;
+  padding: $sp-3;
+  margin-bottom: $sp-4;
+  font-size: $fs-base;
+}
+
 .form {
   display: flex;
   flex-direction: column;
   gap: $sp-3;
 
-  input {
-    padding: 14px;
-    border: none;
-    border-bottom: 1px solid $border;
-    background: transparent;
-    outline: none;
-    font-size: $fs-base;
-    color: $black;
-  }
-
-  button {
+  button[type="submit"] {
     margin-top: 10px;
     padding: 14px;
     background: $black;
@@ -38,26 +38,6 @@
     border: none;
     cursor: pointer;
     letter-spacing: $ls-register;
-  }
-}
-
-.passwordWrapper {
-  position: relative;
-  border-bottom: 1px solid $border;
-
-  input {
-    border-bottom: unset;
-  }
-
-  button {
-    margin-top: unset;
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    border: none;
-    background: transparent;
-    cursor: pointer;
   }
 }
 
@@ -96,11 +76,4 @@
   font-size: $fs-xs;
   opacity: 0.6;
   line-height: $lh-base;
-}
-
-.error {
-  color: $error;
-  font-size: $fs-sm;
-  margin-top: -6px;
-  margin-bottom: 6px;
 }

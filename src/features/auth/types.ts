@@ -17,9 +17,26 @@ export type VerifyOTPData = {
   email: string;
 };
 
-// Responses
 export type AuthTokenResponse = {
   accessToken: string;
+};
+
+export type ForgotPasswordResponse = {
+  message: string;
+};
+
+export type ForgotPasswordBody = {
+  email: string;
+}
+
+export type ResetPasswordResponse = {
+  message: string;
+};
+
+export type ResetPasswordRequestData = {
+  email: string;
+  newPassword: string;
+  code: string;
 };
 
 export type Role = "personal" | "agency";

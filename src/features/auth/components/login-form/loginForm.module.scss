@@ -40,58 +40,6 @@
   gap: $sp-6;
 }
 
-.field label {
-  display: block;
-  margin-bottom: $sp-2;
-  font-size: $fs-sm;
-  letter-spacing: $ls-normal;
-  font-weight: 600;
-  color: $text-muted-80;
-}
-
-.field input {
-  width: 100%;
-  border: none;
-  border-bottom: 1px solid $border-input;
-  background: transparent;
-  padding: $sp-3 0;
-  font-size: $fs-md;
-  transition: $transition-base;
-  color: $black;
-}
-
-.field input:focus {
-  outline: none;
-  border-bottom-color: $accent;
-}
-
-.fieldTop {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.fieldTop a {
-  font-size: $fs-sm;
-  text-decoration: none;
-  color: $accent;
-  font-weight: 600;
-}
-
-.passwordWrapper {
-  position: relative;
-
-  button {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    border: none;
-    background: transparent;
-    cursor: pointer;
-  }
-}
-
 .footer {
   text-align: center;
   margin-top: $sp-4;
@@ -130,17 +78,19 @@
   align-items: center;
   margin: $sp-8 0;
 
+  &::before,
+  &::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: $border-glass-line;
+  }
+
   span {
     padding: 0 $sp-4;
     font-size: $fs-sm;
     color: $text-muted-40;
   }
-}
-
-.line {
-  flex: 1;
-  height: 1px;
-  background: $border-glass-line;
 }
 
 @media (max-width: 600px) {
