@@ -69,7 +69,7 @@ const RegisterPage = () => {
       { code, email: emailValue },
       {
         onSuccess(data, variables, onMutateResult, context) {
-          localStorage.setItem("token", registrationData?.accessToken!);
+          localStorage.setItem("token", data?.accessToken!);
           setOpenOTP(false);
           router.push("/");
         },

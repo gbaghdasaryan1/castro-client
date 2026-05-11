@@ -26,10 +26,10 @@ const LoginPage = () => {
   const onSubmit = (data: LoginFormData) => {
     setError(null);
     loginMutation.mutate(data, {
-      onSuccess: (res: { token: string }) => {
-        console.log(res.token, "sssssss");
+      onSuccess: (res: { accessToken: string }) => {
+        console.log(res.accessToken, "sssssss");
 
-        localStorage.setItem("token", res.token);
+        localStorage.setItem("token", res.accessToken);
         router.push("/");
       },
       onError: (err: Error) => setError(err.message),
