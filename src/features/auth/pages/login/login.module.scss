@@ -1,27 +1,17 @@
+@use '../../../../styles/variables' as *;
 
-
-body {
-  background: #f9f9f9;
-  color: #1a1c1c;
-  font-family: "Inter", sans-serif;
-}
-
-/* app/styles.css */
-
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Epilogue:wght@500;600&display=swap");
-
- 
 .page {
+  color: $text-primary;
+  background: $bg-page;
+  font-family: $font-body;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
-  padding: 24px;
+  padding: $sp-6;
 }
-
-/* Background */
 
 .background {
   position: absolute;
@@ -33,299 +23,51 @@ body {
   position: absolute;
   width: 60%;
   height: 60%;
-  border-radius: 9999px;
-  filter: blur(120px);
+  border-radius: $radius-full;
+  filter: $blur-bg;
 }
 
 .blur-left {
   top: -10%;
   left: -10%;
-  background: rgba(107, 56, 212, 0.08);
+  background: $accent-glow;
 }
 
 .blur-right {
   bottom: -10%;
   right: -10%;
-  background: rgba(0, 0, 0, 0.05);
+  background: $dark-glow;
 }
-
-/* Main */
 
 .container {
   position: relative;
-  z-index: 10;
+  z-index: $z-container;
   width: 100%;
   max-width: 420px;
 }
 
-/* Branding */
-
-.branding {
-  text-align: center;
-  margin-bottom: 80px;
-}
-
-.branding h1 {
-  font-family: "Epilogue", sans-serif;
-  font-size: 24px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: #000;
-}
-
-.branding p {
-  margin-top: 8px;
-  font-size: 12px;
-  letter-spacing: 0.25em;
-  color: rgba(68, 71, 72, 0.6);
-}
-
-/* Glass Card */
-
-.glassCard {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.04);
-  border-radius: 16px;
-  padding: 40px;
-}
-
-.header {
-  margin-bottom: 32px;
-}
-
-.header h2 {
-  font-family: "Epilogue", sans-serif;
-  font-size: 32px;
-  margin-bottom: 8px;
-}
-
-.header p {
-  color: #444748;
-  line-height: 1.6;
-}
-
-/* Form */
-
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.field label {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  font-weight: 600;
-  color: rgba(68, 71, 72, 0.8);
-}
-
-.field input {
-  width: 100%;
-  border: none;
-  border-bottom: 1px solid rgba(196, 199, 199, 0.5);
-  background: transparent;
-  padding: 12px 0;
-  font-size: 16px;
-  transition: 0.3s;
-  color:#000
-}
-
-.field input:focus {
-  outline: none;
-  border-bottom-color: #6b38d4;
-}
-
-.fieldTop {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.fieldTop a {
-  font-size: 12px;
-  text-decoration: none;
-  color: #6b38d4;
-  font-weight: 600;
-}
-
-.passwordWrapper {
-  position: relative;
-
-   button {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    border: none;
-    background: transparent;
-    cursor: pointer;
-  }
-}
-
- 
-
-/* Button */
-
-.submitButton {
-  width: 100%;
-  background: #000;
-  color: #fff;
-  border: none;
-  border-radius: 9999px;
-  padding: 16px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.submitButton:hover {
-  background: #6b38d4;
-}
-
-/* Divider */
-
-.divider {
-  display: flex;
-  align-items: center;
-  margin: 32px 0;
-}
-
-.divider span {
-  padding: 0 16px;
-  font-size: 12px;
-  color: rgba(68, 71, 72, 0.4);
-}
-
-.line {
-  flex: 1;
-  height: 1px;
-  background: rgba(196, 199, 199, 0.2);
-}
-
-/* Social */
-
-.socials {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-}
-
-.socials button {
-  border: 1px solid rgba(196, 199, 199, 0.3);
-  background: transparent;
-  border-radius: 9999px;
-  padding: 14px;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.socials button:hover {
-  background: #f3f3f4;
-}
-
-/* Footer */
-
-.footer {
-  text-align: center;
-  margin-top: 16px;
-}
-
-.footer p {
-  color: #444748;
-}
-
-.footer a {
-  color: #6b38d4;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-/* Floating image */
-
-.floatingImage {
-  position: absolute;
-  right: 48px;
-  bottom: 48px;
-  width: 260px;
-  height: 320px;
-  overflow: hidden;
-  border-radius: 16px;
-  transform: rotate(3deg);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-  opacity: 0.8;
-  display: none;
-}
-
-.floatingImage img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 .error {
-  color: red;
-  font-size: 12px;
-  margin-top: 4px;
+  color: $error;
+  font-size: $fs-sm;
+  margin-top: $sp-1;
 }
 
 .errorBanner {
-  background-color: #fee;
-  color: #c33;
-  border: 1px solid #fcc;
-  border-radius: 8px;
-  padding: 12px;
-  margin-bottom: 16px;
-  font-size: 14px;
-}
-
-.googleContainer {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-.googleButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: 100%;
-  border: 1px solid rgba(196, 199, 199, 0.4);
-  background: #fff;
-  border-radius: 9999px;
-  padding: 14px 24px;
-  font-size: 14px;
-  font-weight: 600;
-  color: #3c4043;
-  cursor: pointer;
-  transition: background 0.2s, box-shadow 0.2s;
-
-  &:hover {
-    background: #f8f8f8;
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
-  }
-}
-
-@media (min-width: 1200px) {
-  .floatingImage {
-    display: block;
-  }
+  background-color: $error-bg;
+  color: $error-text;
+  border: 1px solid $error-border;
+  border-radius: $radius-sm;
+  padding: $sp-3;
+  margin-bottom: $sp-4;
+  font-size: $fs-base;
 }
 
 @media (max-width: 600px) {
   .glassCard {
-    padding: 28px;
+    padding: $sp-7;
   }
 
   .header h2 {
-    font-size: 28px;
+    font-size: $fs-2xl;
   }
 }

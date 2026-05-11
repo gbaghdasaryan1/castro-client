@@ -1,0 +1,106 @@
+@use '../../../../styles/variables' as *;
+
+.card {
+  width: 420px;
+  color: $black;
+
+  h2 {
+    font-size: $fs-2xl;
+    margin-bottom: $sp-2;
+  }
+
+  p {
+    color: $text-dim;
+    margin-bottom: $sp-5;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-3;
+
+  input {
+    padding: 14px;
+    border: none;
+    border-bottom: 1px solid $border;
+    background: transparent;
+    outline: none;
+    font-size: $fs-base;
+    color: $black;
+  }
+
+  button {
+    margin-top: 10px;
+    padding: 14px;
+    background: $black;
+    color: $white;
+    border: none;
+    cursor: pointer;
+    letter-spacing: $ls-register;
+  }
+}
+
+.passwordWrapper {
+  position: relative;
+  border-bottom: 1px solid $border;
+
+  input {
+    border-bottom: unset;
+  }
+
+  button {
+    margin-top: unset;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  margin: $sp-5 0 $sp-4;
+  color: $text-faint;
+  font-size: 13px;
+
+  &::before,
+  &::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: $border;
+  }
+
+  span {
+    margin: 0 $sp-3;
+  }
+}
+
+.footer {
+  margin-top: $sp-5;
+  font-size: 13px;
+
+  a {
+    color: $black;
+    font-weight: bold;
+  }
+}
+
+.terms {
+  margin-top: 15px;
+  font-size: $fs-xs;
+  opacity: 0.6;
+  line-height: $lh-base;
+}
+
+.error {
+  color: $error;
+  font-size: $fs-sm;
+  margin-top: -6px;
+  margin-bottom: 6px;
+}

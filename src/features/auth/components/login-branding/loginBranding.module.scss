@@ -1,0 +1,21 @@
+@use '../../../../styles/variables' as *;
+
+.branding {
+  text-align: center;
+  margin-bottom: $sp-20;
+
+  h1 {
+    font-family: $font-heading;
+    font-size: $fs-xl;
+    letter-spacing: $ls-wide;
+    text-transform: uppercase;
+    color: $black;
+  }
+
+  p {
+    margin-top: $sp-2;
+    font-size: $fs-sm;
+    letter-spacing: $ls-wider;
+    color: $text-muted;
+  }
+}

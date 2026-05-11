@@ -1,37 +1,39 @@
+@use '../../../styles/variables' as *;
+
 .switcher {
   display: flex;
   align-items: center;
   gap: 2px;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(196, 199, 199, 0.3);
-  border-radius: 9999px;
-  padding: 4px;
+  background: $glass-sw;
+  backdrop-filter: $blur-sm;
+  border: 1px solid $border-glass-sw;
+  border-radius: $radius-full;
+  padding: $sp-1;
 }
 
 .btn {
   border: none;
   background: transparent;
-  border-radius: 9999px;
+  border-radius: $radius-full;
   padding: 6px 14px;
-  font-family: "Inter", sans-serif;
-  font-size: 11px;
+  font-family: $font-body;
+  font-size: $fs-xs;
   font-weight: 600;
-  letter-spacing: 0.12em;
-  color: rgba(68, 71, 72, 0.5);
+  letter-spacing: $ls-sw;
+  color: $text-muted-50;
   cursor: pointer;
-  transition: background 0.25s, color 0.25s;
+  transition: background $transition-sw, color $transition-sw;
 
   &:hover:not(.active) {
-    color: rgba(68, 71, 72, 0.9);
+    color: $text-muted-90;
   }
 }
 
 .active {
-  background: #000;
-  color: #fff;
+  background: $black;
+  color: $white;
 
   &:hover {
-    background: #6b38d4;
+    background: $accent;
   }
 }

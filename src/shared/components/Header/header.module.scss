@@ -1,22 +1,17 @@
-/* src/components/Header/header.module.scss */
+@use '../../../styles/variables' as *;
 
 .header {
   height: 80px;
-  padding: 0 40px;
-
+  padding: 0 $sp-10;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  border-bottom: 1px solid #ececec;
-
-  background: rgba(255, 255, 255, 0.85);
-
-  backdrop-filter: blur(12px);
-
+  border-bottom: 1px solid $border-subtle;
+  background: $glass-header;
+  backdrop-filter: $blur-sm;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: $z-header;
 }
 
 .left {
@@ -26,28 +21,26 @@
 }
 
 .logo {
-  font-size: 28px;
+  font-size: $fs-2xl;
   font-weight: 700;
-  letter-spacing: 6px;
-
-  color: black;
+  letter-spacing: $ls-logo;
+  color: $black;
   text-decoration: none;
 }
 
 .nav {
   display: flex;
-  gap: 28px;
+  gap: $sp-7;
 
   a {
-    color: #555;
+    color: $text-light;
     text-decoration: none;
-    font-size: 14px;
-
-    transition: 0.2s ease;
+    font-size: $fs-base;
+    transition: $transition-fast;
   }
 
   a:hover {
-    color: black;
+    color: $black;
   }
 }
 
@@ -58,14 +51,11 @@
 
 .loginButton {
   padding: 10px 18px;
-
-  border-radius: 999px;
-
-  background: black;
-  color: white;
-
+  border-radius: $radius-full;
+  background: $black;
+  color: $white;
   text-decoration: none;
-  font-size: 14px;
+  font-size: $fs-base;
 }
 
 .profileWrapper {
@@ -75,57 +65,41 @@
 .avatar {
   width: 42px;
   height: 42px;
-
   border-radius: 50%;
   border: none;
-
-  background: black;
-  color: white;
-
+  background: $black;
+  color: $white;
   font-weight: 600;
-
   cursor: pointer;
 }
 
 .dropdown {
   position: absolute;
-
   top: 55px;
   right: 0;
-
   width: 200px;
-
-  background: white;
-
-  border: 1px solid #eee;
-  border-radius: 14px;
-
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-
+  background: $white;
+  border: 1px solid $border-light;
+  border-radius: $radius-dropdown;
+  box-shadow: $shadow-header;
   overflow: hidden;
-
   display: flex;
   flex-direction: column;
 
   a,
   button {
-    padding: 14px 16px;
-
+    padding: 14px $sp-4;
     text-align: left;
-
     border: none;
-    background: white;
-
+    background: $white;
     cursor: pointer;
-
-    font-size: 14px;
-    color: #333;
-
+    font-size: $fs-base;
+    color: $text-dropdown;
     text-decoration: none;
   }
 
   a:hover,
   button:hover {
-    background: #f7f7f7;
+    background: $bg-hover;
   }
 }

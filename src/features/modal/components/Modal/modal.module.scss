@@ -1,20 +1,22 @@
+@use '../../../../styles/variables' as *;
+
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: $overlay;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 999;
+  z-index: $z-modal;
 }
 
 .modal {
   width: 420px;
-  background: white;
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 0.2s ease;
+  background: $white;
+  border-radius: $radius-md;
+  padding: $sp-6;
+  box-shadow: $shadow-modal;
+  animation: fadeIn $transition-fast;
 }
 
 @keyframes fadeIn {

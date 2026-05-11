@@ -1,0 +1,23 @@
+@use '../../../styles/variables' as *;
+
+.googleButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  border: 1px solid $border-glass;
+  background: $white;
+  border-radius: $radius-full;
+  padding: 14px 24px;
+  font-size: $fs-base;
+  font-weight: 600;
+  color: $text-google;
+  cursor: pointer;
+  transition: background $transition-fast, box-shadow $transition-fast;
+
+  &:hover {
+    background: $bg-google-hover;
+    box-shadow: $shadow-google;
+  }
+}

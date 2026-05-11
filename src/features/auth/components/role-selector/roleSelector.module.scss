@@ -1,0 +1,22 @@
+@use '../../../../styles/variables' as *;
+
+.roles {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+
+  button {
+    flex: 1;
+    padding: $sp-3;
+    border: 1px solid $border;
+    background: $white;
+    color: $black;
+    cursor: pointer;
+    transition: $transition-base;
+  }
+
+  .active {
+    background: $black !important;
+    color: $white;
+  }
+}

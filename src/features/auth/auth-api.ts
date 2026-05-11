@@ -1,32 +1,16 @@
 import { axiosInstance } from "@config/axios";
+import {
+  AuthTokenResponse,
+  LoginFormData,
+  RegistrationFormData,
+  VerifyOTPData,
+} from "./types";
 
-export const loginRequest = async (data: {
-  email: string;
-  password: string;
-}) => {
-  const res = await axiosInstance.post("/auth/signin", data);
-  return res.data as { accessToken: string };
-};
+export const loginRequest = (data: LoginFormData): Promise<AuthTokenResponse> =>
+  axiosInstance.post<AuthTokenResponse, LoginFormData>("/auth/signin", data);
 
+export const registerRequest = (data: RegistrationFormData): Promise<AuthTokenResponse> =>
+  axiosInstance.post<AuthTokenResponse, RegistrationFormData>("/auth/signup", data);
 
-export const registerRequest = async (data: {
-  lastName:string;
-  firstName:string;
-  email: string;
-  password: string;
-  role:string;
-}) => {
-  const res = await axiosInstance.post("/auth/signup", data);
-  return res.data as { accessToken: string };
-};
-
-
-export const verifyOTPRequest = async (
-  data:{
-    code:string,
-    email:string
-  } 
-) => {
-   const res = await axiosInstance.post("/auth/verify-otp", data);
-  return res.data as { accessToken: string };
-}
+export const verifyOTPRequest = (data: VerifyOTPData): Promise<AuthTokenResponse> => 
+  axiosInstance.post<AuthTokenResponse, VerifyOTPData>("/auth/verify-otp", data);

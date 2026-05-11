@@ -1,0 +1,154 @@
+@use '../../../../styles/variables' as *;
+
+.glassCard {
+  background: $glass-card;
+  backdrop-filter: $blur-md;
+  border: 1px solid $glass-border;
+  box-shadow: $shadow-card;
+  border-radius: $radius-lg;
+  padding: $sp-10;
+}
+
+.header {
+  margin-bottom: $sp-8;
+
+  h2 {
+    font-family: $font-heading;
+    font-size: $fs-3xl;
+    margin-bottom: $sp-2;
+  }
+
+  p {
+    color: $text-secondary;
+    line-height: $lh-md;
+  }
+}
+
+.errorBanner {
+  background-color: $error-bg;
+  color: $error-text;
+  border: 1px solid $error-border;
+  border-radius: $radius-sm;
+  padding: $sp-3;
+  margin-bottom: $sp-4;
+  font-size: $fs-base;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-6;
+}
+
+.field label {
+  display: block;
+  margin-bottom: $sp-2;
+  font-size: $fs-sm;
+  letter-spacing: $ls-normal;
+  font-weight: 600;
+  color: $text-muted-80;
+}
+
+.field input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid $border-input;
+  background: transparent;
+  padding: $sp-3 0;
+  font-size: $fs-md;
+  transition: $transition-base;
+  color: $black;
+}
+
+.field input:focus {
+  outline: none;
+  border-bottom-color: $accent;
+}
+
+.fieldTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fieldTop a {
+  font-size: $fs-sm;
+  text-decoration: none;
+  color: $accent;
+  font-weight: 600;
+}
+
+.passwordWrapper {
+  position: relative;
+
+  button {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+}
+
+.footer {
+  text-align: center;
+  margin-top: $sp-4;
+
+  p {
+    color: $text-secondary;
+  }
+
+  a {
+    color: $accent;
+    font-weight: 700;
+    text-decoration: none;
+  }
+}
+
+.submitButton {
+  width: 100%;
+  background: $black;
+  color: $white;
+  border: none;
+  border-radius: $radius-full;
+  padding: $sp-4;
+  font-size: $fs-sm;
+  font-weight: 600;
+  letter-spacing: $ls-wide;
+  cursor: pointer;
+  transition: $transition-base;
+
+  &:hover {
+    background: $accent;
+  }
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  margin: $sp-8 0;
+
+  span {
+    padding: 0 $sp-4;
+    font-size: $fs-sm;
+    color: $text-muted-40;
+  }
+}
+
+.line {
+  flex: 1;
+  height: 1px;
+  background: $border-glass-line;
+}
+
+@media (max-width: 600px) {
+  .glassCard {
+    padding: $sp-7;
+  }
+
+  .header h2 {
+    font-size: $fs-2xl;
+  }
+}

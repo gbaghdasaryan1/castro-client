@@ -1,0 +1,47 @@
+@use '../../../../styles/variables' as *;
+
+.left {
+  width: 50%;
+  background: $black;
+  color: $white;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: url("/your-image.jpg") center/cover;
+  opacity: 0.35;
+  mix-blend-mode: luminosity;
+}
+
+.leftContent {
+  position: relative;
+  max-width: 400px;
+
+  h1 {
+    font-size: $fs-4xl;
+    font-weight: 600;
+  }
+
+  p {
+    margin-top: $sp-5;
+    opacity: 0.8;
+    line-height: $lh-md;
+  }
+}
+
+.blob {
+  position: absolute;
+  bottom: $sp-20;
+  left: $sp-20;
+  width: 260px;
+  height: 260px;
+  background: $accent-blob;
+  filter: $blur-blob;
+  border-radius: 50%;
+}

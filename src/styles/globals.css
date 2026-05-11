@@ -1,4 +1,7 @@
 
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Epilogue:wght@500;600&display=swap");
+
+
 html,
 body {
   max-width: 100vw;
@@ -22,8 +25,3 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-}
