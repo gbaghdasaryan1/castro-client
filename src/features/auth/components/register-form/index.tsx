@@ -4,13 +4,14 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { GoogleAuthBtn } from "@shared/components/GoogeAuthBtn";
 import { RegistrationFormData } from "@features/auth/types";
-import OtpModal from "@features/modal/components/OTPModal";
+import { OtpModal } from "@features/modal/components/OTPModal";
 import { useOTPVerify, useRegister } from "@features/auth/hooks";
 import styles from "./registerForm.module.scss";
 import { RoleSelector } from "../role-selector";
 import { Input } from "@shared/ui/input";
+import { Button } from "@shared/ui/button";
 
-const RegisterForm: FC = () => {
+export const RegisterForm: FC = () => {
     const router = useRouter();
     const [role, setRole] = useState<"personal" | "agency">("personal");
     const [openOTP, setOpenOTP] = useState(false);
@@ -104,9 +105,9 @@ const RegisterForm: FC = () => {
                     })}
                 />
 
-                <button type="submit" disabled={isSubmitting}>
-                    {isSubmitting ? "Creating..." : "Create Account"}
-                </button>
+                <Button type="submit" fullWidth loading={isSubmitting}>
+                    Create Account
+                </Button>
             </form>
 
             <div className={styles.divider}>
@@ -133,4 +134,3 @@ const RegisterForm: FC = () => {
     );
 };
 
-export default RegisterForm;

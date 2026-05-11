@@ -9,6 +9,8 @@
   border: 1px solid $border-glass-sw;
   border-radius: $radius-full;
   padding: $sp-1;
+  z-index: 10;
+  position: absolute;
 }
 
 .btn {

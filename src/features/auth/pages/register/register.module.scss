@@ -1,9 +1,9 @@
-@use '../../../../styles/variables' as *;
+@use '../../../../styles//variables' as *;
 
 .page {
   display: flex;
-  min-height: 100vh;
-  font-family: $font-body;
+  min-height: calc(100vh - $header-height);
+  // margin-top: $header-height;
 }
 
 .right {
@@ -11,5 +11,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: $bg-page;
+  background: #f9f9f9;
 }
+

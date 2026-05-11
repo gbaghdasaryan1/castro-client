@@ -1,13 +1,13 @@
-import { ReactNode, useEffect } from "react";
+import { FC, ReactNode, useEffect } from "react";
 import styles from "./modal.module.scss";
 
-type ModalProps = {
+type Props = {
   isOpen: boolean;
   onClose: () => void;
   children: ReactNode;
 };
 
-const Modal = ({ isOpen, onClose, children }: ModalProps) => {
+export const Modal: FC<Props> = ({ isOpen, onClose, children }) => {
   // ESC close
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
@@ -29,4 +29,3 @@ const Modal = ({ isOpen, onClose, children }: ModalProps) => {
   );
 };
 
-export default Modal;

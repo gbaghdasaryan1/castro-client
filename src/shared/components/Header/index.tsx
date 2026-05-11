@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import styles from "./header.module.scss";
+import { Button } from "@shared/ui/button";
 
 const Header = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
@@ -35,7 +36,7 @@ const Header = () => {
       {/* LEFT */}
       <div className={styles.left}>
         <Link href="/" className={styles.logo}>
-          CASTORA
+          WeProCast
         </Link>
 
         <nav className={styles.nav}>
@@ -52,9 +53,7 @@ const Header = () => {
       {/* RIGHT */}
       <div className={styles.right}>
         {!isAuthenticated ? (
-          <Link href="/login" className={styles.loginButton}>
-            Login
-          </Link>
+          <Button href="/login">Login</Button>
         ) : (
           <div className={styles.profileWrapper} ref={menuRef}>
             <button

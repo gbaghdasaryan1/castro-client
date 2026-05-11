@@ -8,6 +8,7 @@ import { LoginFormData } from "@features/auth/types";
 import { useLogin } from "@features/auth/hooks";
 import { GoogleAuthBtn } from "@shared/components/GoogeAuthBtn";
 import { Input } from "@shared/ui/input";
+import { Button } from "@shared/ui/button";
 
 export const LoginForm: FC = () => {
     const router = useRouter();
@@ -78,13 +79,13 @@ export const LoginForm: FC = () => {
                     <Link href="/register">{t("auth.signUp")}</Link>
                 </p>
 
-                <button
+                <Button
                     type="submit"
-                    className={styles.submitButton}
-                    disabled={isPending}
+                    fullWidth
+                    loading={isPending}
                 >
-                    {isPending ? "..." : t("auth.signIn")}
-                </button>
+                    {t("auth.signIn")}
+                </Button>
             </form>
 
             <div className={styles.divider}>

@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useRouter } from 'next/router';
 import Cookies from 'js-cookie';
@@ -9,7 +10,7 @@ const LANGS = [
     { code: 'en', label: 'EN' },
 ];
 
-export default function LanguageSwitcher() {
+export const LanguageSwitcher: FC = () => {
     const { i18n } = useTranslation();
     const router = useRouter();
 

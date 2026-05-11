@@ -1,0 +1,31 @@
+@use '../../../styles/variables' as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: $radius-full;
+  background: $black;
+  color: $white;
+  font-size: $fs-sm;
+  font-weight: 600;
+  letter-spacing: $ls-wide;
+  padding: $sp-4;
+  cursor: pointer;
+  text-decoration: none;
+  transition: $transition-base;
+
+  &:hover:not(:disabled) {
+    background: $accent;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &.fullWidth {
+    width: 100%;
+  }
+}

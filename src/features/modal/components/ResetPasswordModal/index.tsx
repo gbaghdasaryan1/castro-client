@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
-import Modal from "../Modal";
+import { Modal } from "../Modal";
 import styles from "./resetPasswordModal.module.scss";
 import { useResetPassword } from "@features/auth/hooks";
 import { Input } from "@shared/ui/input";
+import { Button } from "@shared/ui/button";
 
 type Props = {
     isOpen: boolean;
@@ -17,7 +18,7 @@ type ResetFormData = {
     confirmPassword: string;
 };
 
-const ResetPasswordModal = ({ isOpen, email, onClose }: Props) => {
+export const ResetPasswordModal = ({ isOpen, email, onClose }: Props) => {
     const router = useRouter();
     const [otp, setOtp] = useState<string[]>(["", "", "", "", "", ""]);
     const [otpError, setOtpError] = useState<string | null>(null);
@@ -137,17 +138,12 @@ const ResetPasswordModal = ({ isOpen, email, onClose }: Props) => {
                         })}
                     />
 
-                    <button
-                        type="submit"
-                        className={styles.button}
-                        disabled={isPending}
-                    >
-                        {isPending ? "..." : "Reset Password"}
-                    </button>
+                    <Button type="submit" fullWidth loading={isPending}>
+                        Reset Password
+                    </Button>
                 </form>
             </div>
         </Modal>
     );
 };
 
-export default ResetPasswordModal;

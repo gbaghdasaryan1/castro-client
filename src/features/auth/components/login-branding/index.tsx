@@ -6,7 +6,7 @@ export const LoginBranding: FC = () => {
     const { t } = useTranslation("auth");
     return (
         <div className={styles.branding}>
-            <h1>Castro</h1>
+            <h1>WeProCast</h1>
             <p>{t("auth.login.subtitle")}</p>
         </div>
     );

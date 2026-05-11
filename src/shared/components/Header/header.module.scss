@@ -1,7 +1,7 @@
 @use '../../../styles/variables' as *;
 
 .header {
-  height: 80px;
+  height: $header-height;
   padding: 0 $sp-10;
   display: flex;
   align-items: center;
@@ -9,8 +9,10 @@
   border-bottom: 1px solid $border-subtle;
   background: $glass-header;
   backdrop-filter: $blur-sm;
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: $z-header;
 }
 
@@ -47,15 +49,6 @@
 .right {
   display: flex;
   align-items: center;
-}
-
-.loginButton {
-  padding: 10px 18px;
-  border-radius: $radius-full;
-  background: $black;
-  color: $white;
-  text-decoration: none;
-  font-size: $fs-base;
 }
 
 .profileWrapper {

@@ -1,16 +1,16 @@
 import { FC, useState } from "react";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
-import styles from "../login-form/loginForm.module.scss";
+import styles from "./forgotPasswordForm.module.scss";
 import { ForgotPasswordBody } from "@features/auth/types";
 import { useForgotPassword } from "@features/auth/hooks";
-import ResetPasswordModal from "@features/modal/components/ResetPasswordModal";
+import { ResetPasswordModal } from "@features/modal/components/ResetPasswordModal";
 import { Input } from "@shared/ui/input";
+import { Button } from "@shared/ui/button";
 
 export const ForgotPasswordForm: FC = () => {
     const [emailSent, setEmailSent] = useState<string | null>(null);
-    const [error, setError] = useState<string | null>(null);
-    const { mutate: forgotMutate, isPending } = useForgotPassword();
+    const { mutate: forgotMutate, isPending, error, isError } = useForgotPassword();
 
     const {
         register,
@@ -19,10 +19,8 @@ export const ForgotPasswordForm: FC = () => {
     } = useForm<ForgotPasswordBody>();
 
     const onSubmit = (data: ForgotPasswordBody) => {
-        setError(null);
         forgotMutate(data.email, {
             onSuccess: () => setEmailSent(data.email),
-            onError: (err: Error) => setError(err.message),
         });
     };
 
@@ -34,7 +32,7 @@ export const ForgotPasswordForm: FC = () => {
                     <p>Enter your email and we&apos;ll send you a reset code.</p>
                 </header>
 
-                {error && <div className={styles.errorBanner}>{error}</div>}
+                {isError && <div className={styles.errorBanner}>{error.message}</div>}
 
                 <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
                     <Input
@@ -51,13 +49,13 @@ export const ForgotPasswordForm: FC = () => {
                         })}
                     />
 
-                    <button
+                    <Button
                         type="submit"
-                        className={styles.submitButton}
-                        disabled={isPending}
+                        fullWidth
+                        loading={isPending}
                     >
-                        {isPending ? "..." : "Send Reset Code"}
-                    </button>
+                        Send Reset Code
+                    </Button>
                 </form>
 
                 <p className={styles.footer}>

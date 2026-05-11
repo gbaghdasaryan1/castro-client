@@ -1,6 +1,6 @@
 import { RegisterLeftPanel } from "@features/auth/components/register-left-panel";
 import styles from "./register.module.scss";
-import RegisterForm from "@features/auth/components/register-form";
+import { RegisterForm } from "@features/auth/components/register-form";
 import { FC } from "react";
 
 export const RegisterPage: FC = () => (

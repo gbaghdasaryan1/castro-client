@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { ClipboardEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
 import styles from "./otp.module.scss";
-import Modal from "../Modal";
+import { Modal } from "../Modal";
+import { Button } from "@shared/ui/button";
 
 type Props = {
   errorOtp?: string | null;
@@ -9,7 +10,7 @@ type Props = {
   onSubmit: (code: string) => void;
 };
 
-const OtpModal = ({ errorOtp, isOpen, onClose, onSubmit }: Props) => {
+export const OtpModal = ({ errorOtp, isOpen, onClose, onSubmit }: Props) => {
   const [otp, setOtp] = useState<string[]>(["", "", "", "", "", ""]);
 
   const inputsRef = useRef<Array<HTMLInputElement | null>>([]);
@@ -49,14 +50,14 @@ const OtpModal = ({ errorOtp, isOpen, onClose, onSubmit }: Props) => {
     }
   };
 
-  const handleKeyDown = (e: any, index: number) => {
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>, index: number) => {
     // backspace move previous
     if (e.key === "Backspace" && !otp[index] && index > 0) {
       inputsRef.current[index - 1]?.focus();
     }
   };
 
-  const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
+  const handlePaste = (e: ClipboardEvent<HTMLInputElement>) => {
     const value = e.clipboardData.getData("text").slice(0, 6);
 
     if (!/^\d+$/.test(value)) return;
@@ -98,16 +99,12 @@ const OtpModal = ({ errorOtp, isOpen, onClose, onSubmit }: Props) => {
           ))}
         </div>
 
-        <button
-          className={styles.button}
-          onClick={() => handleSubmit(otp.join(""))}
-        >
+        <Button fullWidth onClick={() => handleSubmit(otp.join(""))}>
           Verify
-        </button>
+        </Button>
         {errorOtp && <div className={styles.error}>{errorOtp}</div>}
       </div>
     </Modal>
   );
 };
 
-export default OtpModal;
