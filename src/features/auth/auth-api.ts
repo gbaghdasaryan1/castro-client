@@ -5,7 +5,7 @@ export const loginRequest = async (data: {
   password: string;
 }) => {
   const res = await axiosInstance.post("/auth/signin", data);
-  return res.data as { token: string };
+  return res.data as { accessToken: string };
 };
 
 
@@ -17,7 +17,7 @@ export const registerRequest = async (data: {
   role:string;
 }) => {
   const res = await axiosInstance.post("/auth/signup", data);
-  return res.data as { token: string };
+  return res.data as { accessToken: string };
 };
 
 
@@ -28,5 +28,5 @@ export const verifyOTPRequest = async (
   } 
 ) => {
    const res = await axiosInstance.post("/auth/verify-otp", data);
-  return res.data as { token: string };
+  return res.data as { accessToken: string };
 }

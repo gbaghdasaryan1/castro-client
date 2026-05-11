@@ -7,8 +7,11 @@ import { I18nextProvider } from "react-i18next";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import i18n from "@/lib/i18n";
 import LanguageSwitcher from "@shared/ui/language-switcher";
+import Header from "@shared/components/Header";
 
-const googleClientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || '764359469080-2dfsv4fsddgmjd1g27r9kp0ql2pkhpo7.apps.googleusercontent.com';
+const googleClientId =
+  process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID ||
+  "764359469080-2dfsv4fsddgmjd1g27r9kp0ql2pkhpo7.apps.googleusercontent.com";
 
 export default function App({ Component, pageProps }: AppProps) {
   const { translations, lang } = pageProps;
@@ -26,10 +29,10 @@ export default function App({ Component, pageProps }: AppProps) {
     <GoogleOAuthProvider clientId={googleClientId}>
       <QueryClientProvider client={queryClient}>
         <I18nextProvider i18n={i18n}>
-
-          <div style={{ position: 'fixed', top: 20, right: 24, zIndex: 100 }}>
+          <div style={{ position: "fixed", top: 20, right: 24, zIndex: 100 }}>
             <LanguageSwitcher />
           </div>
+          <Header />
 
           <Component {...pageProps} />
         </I18nextProvider>

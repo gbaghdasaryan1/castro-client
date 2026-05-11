@@ -27,6 +27,8 @@ const LoginPage = () => {
     setError(null);
     loginMutation.mutate(data, {
       onSuccess: (res: { token: string }) => {
+        console.log(res.token, "sssssss");
+
         localStorage.setItem("token", res.token);
         router.push("/");
       },

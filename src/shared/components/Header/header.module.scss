@@ -1,0 +1,131 @@
+/* src/components/Header/header.module.scss */
+
+.header {
+  height: 80px;
+  padding: 0 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 1px solid #ececec;
+
+  background: rgba(255, 255, 255, 0.85);
+
+  backdrop-filter: blur(12px);
+
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 6px;
+
+  color: black;
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  gap: 28px;
+
+  a {
+    color: #555;
+    text-decoration: none;
+    font-size: 14px;
+
+    transition: 0.2s ease;
+  }
+
+  a:hover {
+    color: black;
+  }
+}
+
+.right {
+  display: flex;
+  align-items: center;
+}
+
+.loginButton {
+  padding: 10px 18px;
+
+  border-radius: 999px;
+
+  background: black;
+  color: white;
+
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.profileWrapper {
+  position: relative;
+}
+
+.avatar {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+  border: none;
+
+  background: black;
+  color: white;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.dropdown {
+  position: absolute;
+
+  top: 55px;
+  right: 0;
+
+  width: 200px;
+
+  background: white;
+
+  border: 1px solid #eee;
+  border-radius: 14px;
+
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+
+  a,
+  button {
+    padding: 14px 16px;
+
+    text-align: left;
+
+    border: none;
+    background: white;
+
+    cursor: pointer;
+
+    font-size: 14px;
+    color: #333;
+
+    text-decoration: none;
+  }
+
+  a:hover,
+  button:hover {
+    background: #f7f7f7;
+  }
+}

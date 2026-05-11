@@ -27,6 +27,7 @@ const RegisterPage = () => {
     mutate: registerMutation,
     error: registrationError,
     isError: isRegistrationError,
+    data: registrationData,
   } = useRegister();
 
   const { mutate: otpVerifyMutation, error: otpVerifyError } = useOTPVerify();
@@ -47,11 +48,14 @@ const RegisterPage = () => {
       role,
     });
 
-    if (!isRegistrationError) {
-      setOpenOTP(true);
-    }
-    // setError(null);
-    registerMutation({ ...data, role });
+    registerMutation(
+      { ...data, role },
+      {
+        onSuccess: () => {
+          setOpenOTP(true);
+        },
+      },
+    );
   };
 
   const handleGoogleSignUp = () => {
@@ -65,6 +69,7 @@ const RegisterPage = () => {
       { code, email: emailValue },
       {
         onSuccess(data, variables, onMutateResult, context) {
+          localStorage.setItem("token", registrationData?.accessToken!);
           setOpenOTP(false);
           router.push("/");
         },
@@ -175,8 +180,8 @@ const RegisterPage = () => {
                 {...register("password", {
                   required: "Password is required",
                   minLength: {
-                    value: 6,
-                    message: "Min 6 characters",
+                    value: 8,
+                    message: "Min 8 characters",
                   },
                 })}
               />
