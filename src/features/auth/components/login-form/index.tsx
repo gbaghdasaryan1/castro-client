@@ -9,6 +9,7 @@ import { useLogin } from "@features/auth/hooks";
 import { GoogleAuthBtn } from "@shared/components/GoogeAuthBtn";
 import { Input } from "@shared/ui/input";
 import { Button } from "@shared/ui/button";
+import { saveToken } from "@shared/utils/token";
 
 export const LoginForm: FC = () => {
     const router = useRouter();
@@ -26,7 +27,7 @@ export const LoginForm: FC = () => {
         setError(null);
         loginMutate(data, {
             onSuccess: (res) => {
-                localStorage.setItem("token", res.accessToken);
+                saveToken(res.accessToken);
                 router.push("/");
             },
             onError: (err: Error) => setError(err.message),

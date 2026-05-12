@@ -10,6 +10,7 @@ import styles from "./registerForm.module.scss";
 import { RoleSelector } from "../role-selector";
 import { Input } from "@shared/ui/input";
 import { Button } from "@shared/ui/button";
+import { saveToken } from "@shared/utils/token";
 
 export const RegisterForm: FC = () => {
     const router = useRouter();
@@ -44,7 +45,7 @@ export const RegisterForm: FC = () => {
             { code, email: emailValue },
             {
                 onSuccess(data) {
-                    localStorage.setItem("token", data.accessToken);
+                    saveToken(data.accessToken);
                     setOpenOTP(false);
                     router.push("/");
                 },

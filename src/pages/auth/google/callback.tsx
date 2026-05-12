@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import { saveToken } from "@shared/utils/token";
 
 const GoogleCallbackPage = () => {
   const router = useRouter();
@@ -10,7 +11,7 @@ const GoogleCallbackPage = () => {
     const { token, error } = router.query;
 
     if (token && typeof token === "string") {
-      localStorage.setItem("token", token);
+      saveToken(token);
       router.replace("/");
     } else if (error) {
       router.replace(`/login?error=${error}`);
