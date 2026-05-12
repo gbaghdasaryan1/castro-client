@@ -1,0 +1,247 @@
+@use '../../../../styles/variables' as *;
+
+
+.section {
+  background: $glass-card;
+  backdrop-filter: $blur-md;
+  border: 1px solid $border-glass;
+  border-radius: $radius-lg;
+  padding: $sp-8;
+  box-shadow: $shadow-card;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $sp-6;
+  padding-bottom: $sp-4;
+  border-bottom: 1px solid $border-subtle;
+
+  h3 {
+    font-family: $font-heading;
+    font-size: $fs-md;
+    font-weight: 700;
+    color: $text-primary;
+  }
+}
+
+.editBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: $sp-1;
+  padding: $sp-2 $sp-4;
+  border: 1px solid $border-glass;
+  border-radius: $radius-full;
+  background: transparent;
+  color: $accent;
+  font-size: $fs-sm;
+  font-weight: 600;
+  letter-spacing: $ls-normal;
+  cursor: pointer;
+  transition: $transition-base;
+
+  &:hover {
+    background: rgba(195, 42, 42, 0.06);
+    border-color: $accent;
+  }
+}
+
+.selectLabel {
+  font-size: $fs-sm;
+  font-weight: 600;
+  letter-spacing: $ls-normal;
+  color: $text-muted-80;
+}
+
+
+.textareaField {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-2;
+  margin-bottom: $sp-5;
+}
+
+.textarea {
+  border: 1px solid $border-input;
+  border-radius: $radius-sm;
+  background: transparent;
+  padding: $sp-3 $sp-4;
+  font-size: $fs-base;
+  font-family: $font-body;
+  color: $text-primary;
+  outline: none;
+  resize: vertical;
+  transition: border-color $transition-base;
+  line-height: $lh-md;
+
+  &::placeholder {
+    color: $text-faint;
+  }
+
+  &:focus {
+    border-color: $accent;
+  }
+}
+
+.linksSection {
+  margin-bottom: $sp-5;
+}
+
+.linksHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $sp-3;
+}
+
+.addLinkBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: $sp-1;
+  padding: $sp-1 $sp-3;
+  border: 1px dashed $border;
+  border-radius: $radius-full;
+  background: transparent;
+  color: $accent;
+  font-size: $fs-sm;
+  font-weight: 600;
+  cursor: pointer;
+  transition: $transition-base;
+
+  &:hover {
+    border-style: solid;
+    background: rgba(195, 42, 42, 0.05);
+  }
+}
+
+.linksList {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-3;
+}
+
+.linkItem {
+  display: flex;
+  align-items: flex-end;
+  gap: $sp-3;
+}
+
+.linkInput {
+  flex: 1;
+}
+
+.removeLinkBtn {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $border;
+  border-radius: 50%;
+  background: transparent;
+  color: $text-secondary;
+  font-size: $fs-xs;
+  cursor: pointer;
+  transition: $transition-base;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: $sp-3;
+
+  &:hover {
+    border-color: $error;
+    color: $error;
+    background: $error-bg;
+  }
+}
+
+.emptyHint {
+  font-size: $fs-sm;
+  color: $text-faint;
+  font-style: italic;
+}
+
+.bioBlock,
+.linksBlock {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-2;
+  margin-top: $sp-5;
+}
+
+.bioText {
+  font-size: $fs-base;
+  color: $text-secondary;
+  line-height: $lh-md;
+  white-space: pre-wrap;
+}
+
+.viewLinksList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $sp-2;
+}
+
+.link {
+  color: $accent;
+  font-size: $fs-sm;
+  text-decoration: none;
+  word-break: break-all;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: $sp-3;
+  padding-top: $sp-5;
+  border-top: 1px solid $border-subtle;
+  margin-top: $sp-2;
+}
+
+
+.cancelBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $sp-4;
+  border: 1px solid $border;
+  border-radius: $radius-full;
+  background: transparent;
+  color: $text-secondary;
+  font-size: $fs-sm;
+  font-weight: 600;
+  letter-spacing: $ls-wide;
+  cursor: pointer;
+  transition: $transition-base;
+
+  &:hover:not(:disabled) {
+    background: $bg-hover;
+    border-color: $text-secondary;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.fieldLabel {
+  font-size: $fs-xs;
+  font-weight: 600;
+  color: $text-muted-50;
+  text-transform: uppercase;
+  letter-spacing: $ls-wide;
+}
+
+.empty {
+  color: $text-faint;
+  font-style: italic;
+  font-weight: 400;
+}

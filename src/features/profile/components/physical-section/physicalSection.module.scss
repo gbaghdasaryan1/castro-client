@@ -1,0 +1,110 @@
+@use '../../../../styles/variables' as *;
+
+
+.section {
+  background: $glass-card;
+  backdrop-filter: $blur-md;
+  border: 1px solid $border-glass;
+  border-radius: $radius-lg;
+  padding: $sp-8;
+  box-shadow: $shadow-card;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $sp-6;
+  padding-bottom: $sp-4;
+  border-bottom: 1px solid $border-subtle;
+
+  h3 {
+    font-family: $font-heading;
+    font-size: $fs-md;
+    font-weight: 700;
+    color: $text-primary;
+  }
+}
+
+
+.editBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: $sp-1;
+  padding: $sp-2 $sp-4;
+  border: 1px solid $border-glass;
+  border-radius: $radius-full;
+  background: transparent;
+  color: $accent;
+  font-size: $fs-sm;
+  font-weight: 600;
+  letter-spacing: $ls-normal;
+  cursor: pointer;
+  transition: $transition-base;
+
+  &:hover {
+    background: rgba(195, 42, 42, 0.06);
+    border-color: $accent;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $sp-5 $sp-8;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $sp-5 $sp-8;
+  margin-bottom: $sp-6;
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: $sp-3;
+  padding-top: $sp-5;
+  border-top: 1px solid $border-subtle;
+  margin-top: $sp-2;
+}
+
+.cancelBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $sp-4;
+  border: 1px solid $border;
+  border-radius: $radius-full;
+  background: transparent;
+  color: $text-secondary;
+  font-size: $fs-sm;
+  font-weight: 600;
+  letter-spacing: $ls-wide;
+  cursor: pointer;
+  transition: $transition-base;
+
+  &:hover:not(:disabled) {
+    background: $bg-hover;
+    border-color: $text-secondary;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.errorBanner {
+  background: $error-bg;
+  color: $error-text;
+  border: 1px solid $error-border;
+  border-radius: $radius-sm;
+  padding: $sp-3 $sp-4;
+  font-size: $fs-sm;
+  margin-bottom: $sp-5;
+}
+
+
+

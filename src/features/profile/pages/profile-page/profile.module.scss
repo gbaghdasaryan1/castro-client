@@ -1,0 +1,100 @@
+@use '../../../../styles/variables' as *;
+
+// ─── Page & layout ────────────────────────────────────────────────────────────
+
+.page {
+  min-height: 100vh;
+  background: $bg-page;
+  padding: $sp-10 $sp-6;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: $sp-8;
+  max-width: 1100px;
+  margin: 0 auto;
+  align-items: start;
+}
+    
+.sidebar {
+  position: sticky;
+  top: calc(#{$header-height} + #{$sp-5});
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-5;
+}
+
+// ─── Tabs ─────────────────────────────────────────────────────────────────────
+
+.tabs {
+  display: flex;
+  background: $glass-card;
+  border: 1px solid $border-glass;
+  border-radius: $radius-md;
+  padding: $sp-1;
+  gap: $sp-1;
+  box-shadow: $shadow-card;
+}
+
+.tab {
+  flex: 1;
+  padding: $sp-3 $sp-4;
+  border: none;
+  background: transparent;
+  border-radius: $radius-sm;
+  font-size: $fs-sm;
+  font-weight: 600;
+  color: $text-muted-80;
+  cursor: pointer;
+  transition: $transition-base;
+  letter-spacing: $ls-normal;
+
+  &:hover:not(.tabActive) {
+    background: $bg-hover;
+    color: $text-primary;
+  }
+}
+
+.tabActive {
+  background: $accent;
+  color: $white;
+  box-shadow: 0 2px 8px rgba(195, 42, 42, 0.3);
+}
+
+// ─── Loading / error states ───────────────────────────────────────────────────
+
+.stateWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: $sp-5;
+}
+
+.stateText {
+  color: $text-secondary;
+  font-size: $fs-base;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid $border-light;
+  border-top-color: $accent;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// ─── Responsive ───────────────────────────────────────────────────────────────
+

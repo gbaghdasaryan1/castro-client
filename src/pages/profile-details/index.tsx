@@ -1,11 +1,12 @@
-import { useAuthGuard } from "@/features/auth/ProtectedRoute";
+import { useAuthGuard } from "@features/auth/ProtectedRoute";
+import { ProfilePage } from "@features/profile";
 
 export default function ProfileDetails() {
   const isChecking = useAuthGuard();
 
   if (isChecking) {
-    return <div>Loading...</div>;
+    return null;
   }
 
-  return <div>Profile Details</div>;
+  return <ProfilePage />;
 }

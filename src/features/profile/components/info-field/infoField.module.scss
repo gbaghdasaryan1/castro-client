@@ -1,0 +1,32 @@
+@use '../../../../styles/variables' as *;
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-1;
+}
+
+.fieldLabel {
+  font-size: $fs-xs;
+  font-weight: 600;
+  color: $text-muted-50;
+  text-transform: uppercase;
+  letter-spacing: $ls-wide;
+}
+
+.fieldValue {
+  font-size: $fs-base;
+  color: $text-primary;
+  font-weight: 500;
+}
+
+
+.empty {
+  color: $text-faint;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}

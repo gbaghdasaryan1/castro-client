@@ -30,8 +30,8 @@ export default function App({ Component, pageProps }: AppProps) {
       <QueryClientProvider client={queryClient}>
         <I18nextProvider i18n={i18n}>
           {/* <LanguageSwitcher /> */}
+          <Header />
           <MainLayout>
-            <Header />
             <Component {...pageProps} />
           </MainLayout>
         </I18nextProvider>

@@ -14,3 +14,27 @@
   background: #f9f9f9;
 }
 
+
+.bg-modern-tech {
+  background: #1A1A1A;
+  position: relative;
+  overflow: hidden;
+}
+.bg-modern-tech::before {
+  content: '';
+  position: absolute;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #C32A2A 0%, transparent 65%);
+  top: -180px; left: -120px;
+  opacity: 0.8;
+}
+.bg-modern-tech::after {
+  content: '';
+  position: absolute;
+  width: 420px; height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #FF6B6B 0%, transparent 65%);
+  bottom: -160px; right: -80px;
+  opacity: 0.55;
+}

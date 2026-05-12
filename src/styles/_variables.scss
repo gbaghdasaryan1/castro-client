@@ -1,9 +1,11 @@
 // ─── Colors ───────────────────────────────────────────────────────────────────
 
 // Brand
-$black:  #000;
-$white:  #fff;
-$accent: #6b38d4;
+$black:        #1A1A1A;
+$white:        #F5F5F5;
+$accent:       #C32A2A;
+$deep-crimson: #7A1010;
+$neon-coral:   #FF6B6B;   
 
 // Text
 $text-primary:   #1a1c1c;
@@ -35,7 +37,7 @@ $border-glass-line: rgba(196, 199, 199, 0.2);
 $border-glass-sw:   rgba(196, 199, 199, 0.3);
 
 // Backgrounds
-$bg-page:         #f9f9f9;
+$bg-page:         #F5F5F5;
 $bg-hover:        #f7f7f7;
 $bg-google-hover: #f8f8f8;
 
@@ -48,8 +50,8 @@ $glass-sw:     rgba(255, 255, 255, 0.6);
 // Overlays & glows
 $overlay:     rgba(0, 0, 0, 0.6);
 $dark-glow:   rgba(0, 0, 0, 0.05);
-$accent-glow: rgba(107, 56, 212, 0.08);
-$accent-blob: rgba(107, 56, 212, 0.2);
+$accent-glow: rgba(195, 42, 42, 0.08);
+$accent-blob: rgba(195, 42, 42, 0.2);
 
 // ─── Typography ───────────────────────────────────────────────────────────────
 
