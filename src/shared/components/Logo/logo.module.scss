@@ -1,0 +1,10 @@
+@use '../../../styles/variables' as *;
+
+
+.logo{
+    color: #D9E4FF;
+
+    text{
+        color: $neon-coral;
+    }
+}

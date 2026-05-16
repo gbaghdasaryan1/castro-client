@@ -7,6 +7,7 @@
   border-radius: $radius-lg;
   padding: $sp-8;
   box-shadow: $shadow-card;
+  margin-top: $sp-4;
 }
 
 .sectionHeader {
@@ -38,60 +39,69 @@
   font-weight: 600;
   letter-spacing: $ls-normal;
   cursor: pointer;
-  transition: $transition-base;
+  transition: background $transition-fast, border-color $transition-fast;
 
   &:hover {
-    background: rgba(195, 42, 42, 0.06);
+    background: $accent-glow;
     border-color: $accent;
   }
 }
 
-.select {
-  border: none;
-  border-bottom: 1px solid $border-input;
-  background: transparent;
-  padding: $sp-3 0;
-  font-size: $fs-base;
-  color: $text-primary;
-  outline: none;
-  cursor: pointer;
-  transition: border-color $transition-base;
-  appearance: none;
+.savedBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: $sp-1;
+  padding: $sp-1 $sp-3;
+  border-radius: $radius-full;
+  background: rgba(34, 139, 34, 0.08);
+  border: 1px solid rgba(34, 139, 34, 0.2);
+  color: #2a7a2a;
+  font-size: $fs-xs;
+  font-weight: 600;
+  letter-spacing: $ls-normal;
+  animation: fadeInOut 3s ease forwards;
 
-  &:focus {
-    border-bottom-color: $accent;
+  &::before {
+    content: '✓';
+    font-size: 10px;
   }
+}
+
+@keyframes fadeInOut {
+  0%   { opacity: 0; transform: translateY(-4px); }
+  15%  { opacity: 1; transform: translateY(0); }
+  75%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.fadeIn {
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.errorBanner {
+  margin-bottom: $sp-5;
+  padding: $sp-3 $sp-4;
+  border-radius: $radius-sm;
+  background: $error-bg;
+  border: 1px solid $error-border;
+  color: $error-text;
+  font-size: $fs-sm;
+  font-weight: 500;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $sp-8;
 }
 
 .fullSpan {
   grid-column: 1 / -1;
-}
-
-.selectField {
-  display: flex;
-  flex-direction: column;
-  gap: $sp-2;
-}
-
-.selectLabel {
-  font-size: $fs-sm;
-  font-weight: 600;
-  letter-spacing: $ls-normal;
-  color: $text-muted-80;
-}
-
-.formGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: $sp-5 $sp-8;
-  margin-bottom: $sp-6;
-}
-
-
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: $sp-5 $sp-8;
 }
 
 
@@ -99,7 +109,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: $sp-4;
+  padding: $sp-2 $sp-5;
   border: 1px solid $border;
   border-radius: $radius-full;
   background: transparent;
@@ -108,7 +118,7 @@
   font-weight: 600;
   letter-spacing: $ls-wide;
   cursor: pointer;
-  transition: $transition-base;
+  transition: background $transition-fast, border-color $transition-fast;
 
   &:hover:not(:disabled) {
     background: $bg-hover;
@@ -124,6 +134,7 @@
 .formActions {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   gap: $sp-3;
   padding-top: $sp-5;
   margin-top: $sp-2;

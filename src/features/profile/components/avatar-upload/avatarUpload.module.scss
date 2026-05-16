@@ -2,17 +2,18 @@
 @use '../../../../styles/variables' as *;
 
 .avatarSection {
+  
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: $sp-5;
+  border: 1px solid red;
 }
 
 .avatarWrap {
   position: relative;
   display: inline-block;
   cursor: pointer;
-  border-radius: 50%;
 
   &:hover .cameraOverlay {
     opacity: 1;
@@ -20,17 +21,17 @@
 }
 
 .avatar {
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
+  width: 100%;
+  height: 500px;
   object-fit: cover;
+  object-position: center;
+  border: 1px solid red;
   display: block;
 }
 
 .avatarFallback {
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
+  width: 100%;
+  height: 500px;
   background: linear-gradient(135deg, $deep-crimson, $neon-coral);
   color: $white;
   font-size: $fs-xl;
@@ -44,7 +45,6 @@
 .cameraOverlay {
   position: absolute;
   inset: 0;
-  border-radius: 50%;
   background: rgba(0, 0, 0, 0.45);
   display: flex;
   align-items: center;

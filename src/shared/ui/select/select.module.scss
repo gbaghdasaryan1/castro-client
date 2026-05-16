@@ -1,0 +1,169 @@
+@use '../../../styles/variables' as *;
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-2;
+  position: relative;
+}
+
+.label {
+  font-size: $fs-sm;
+  font-weight: 600;
+  letter-spacing: $ls-normal;
+  color: $text-muted-80;
+}
+
+// ─── Trigger ──────────────────────────────────────────────────────────────────
+
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: $sp-3 $sp-4;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: $blur-sm;
+  border: 1px solid $border-glass;
+  border-radius: $radius-md;
+  cursor: pointer;
+  text-align: left;
+  transition:
+    border-color $transition-fast,
+    box-shadow $transition-fast,
+    background $transition-fast,
+    border-radius $transition-fast;
+
+  &:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.82);
+    border-color: rgba(196, 199, 199, 0.65);
+  }
+
+  &:focus-visible {
+    outline: none;
+    border-color: $accent;
+    box-shadow: 0 0 0 3px $accent-glow;
+  }
+}
+
+.triggerOpen {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: $accent;
+  box-shadow: 0 0 0 3px $accent-glow;
+  border-radius: $radius-md $radius-md 0 0;
+}
+
+.triggerError {
+  border-color: $error;
+
+  &:focus-visible,
+  &.triggerOpen {
+    box-shadow: 0 0 0 3px rgba(229, 57, 53, 0.08);
+    border-color: $error;
+  }
+}
+
+.triggerDisabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+// ─── Text ─────────────────────────────────────────────────────────────────────
+
+.selectedText {
+  font-size: $fs-base;
+  color: $text-primary;
+  font-weight: 500;
+}
+
+.placeholder {
+  font-size: $fs-base;
+  color: $text-faint;
+}
+
+// ─── Chevron ──────────────────────────────────────────────────────────────────
+
+.chevron {
+  flex-shrink: 0;
+  color: $text-muted-50;
+  transition: transform $transition-fast, color $transition-fast;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+  color: $accent;
+}
+
+// ─── Dropdown panel ───────────────────────────────────────────────────────────
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: $z-container;
+  list-style: none;
+  margin: 0;
+  padding: $sp-2;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: $blur-md;
+  border: 1px solid $border-glass;
+  border-top: none;
+  border-radius: 0 0 $radius-md $radius-md;
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.07),
+    0 2px 8px rgba(0, 0, 0, 0.04);
+  max-height: 240px;
+  overflow-y: auto;
+  animation: dropIn 0.15s ease;
+
+  &::-webkit-scrollbar { width: 4px; }
+  &::-webkit-scrollbar-track { background: transparent; }
+  &::-webkit-scrollbar-thumb {
+    background: $border-glass;
+    border-radius: $radius-full;
+  }
+}
+
+@keyframes dropIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+// ─── Options ──────────────────────────────────────────────────────────────────
+
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $sp-3 $sp-4;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  font-size: $fs-base;
+  color: $text-secondary;
+  font-weight: 400;
+  transition: background $transition-fast, color $transition-fast;
+
+  & + & { margin-top: 2px; }
+}
+
+.optionFocused {
+  background: $bg-hover;
+  color: $text-primary;
+}
+
+.optionSelected {
+  color: $accent;
+  font-weight: 600;
+
+  &.optionFocused {
+    background: $accent-glow;
+  }
+}
+
+// ─── Error ────────────────────────────────────────────────────────────────────
+
+.error {
+  font-size: $fs-sm;
+  color: $error;
+}

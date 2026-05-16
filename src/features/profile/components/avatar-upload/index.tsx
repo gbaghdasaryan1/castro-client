@@ -75,7 +75,9 @@ export const AvatarUpload: FC<Props> = ({ profile }) => {
 
     return (
         <div className={styles.avatarSection}>
-            <div
+
+            <div className={styles.mainImage}></div>
+            {/* <div
                 className={styles.avatarWrap}
                 onClick={() => !preview && inputRef.current?.click()}
                 title={preview ? undefined : "Change profile photo"}
@@ -91,7 +93,7 @@ export const AvatarUpload: FC<Props> = ({ profile }) => {
                         <IconCamera />
                     </div>
                 )}
-            </div>
+            </div> */}
 
             <input
                 ref={inputRef}

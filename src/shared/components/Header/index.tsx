@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import styles from "./header.module.scss";
 import { Button } from "@shared/ui/button";
+import { Logo } from "../Logo";
 
 const Header = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
@@ -35,9 +36,7 @@ const Header = () => {
     <header className={styles.header}>
       {/* LEFT */}
       <div className={styles.left}>
-        <Link href="/" className={styles.logo}>
-          WeProCast
-        </Link>
+        <Logo />
 
         <nav className={styles.nav}>
           <Link href="/discover">Discover</Link>
@@ -65,7 +64,7 @@ const Header = () => {
 
             {menuOpen && (
               <div className={styles.dropdown}>
-                <Link href="/profile">Account</Link>
+                <Link href="/profile-details">Account</Link>
 
                 <Link href="/settings">Settings</Link>
 
